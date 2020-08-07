@@ -50,7 +50,7 @@ test('should set text filter', () => {
 test('should set startDate filter', () => {
     const startDate = moment();
     const action = {
-        type: 'SET_START_ DATE',
+        type: 'SET_START_DATE',
         startDate 
 
     };

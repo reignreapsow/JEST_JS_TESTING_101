@@ -63,8 +63,8 @@ IV. SET UP JEST TESTS
             
             //# TEST CASE CODE
 
-            //# FIXTURE (Dumby Sample Data)
-            const expense = { //FIXTURE (Dumby Data)
+            //#===== FIXTURE (Dumby Sample Data)
+            const expense = { 
                 id: '109',
                 description: 'Laptop',
                 note: '',
@@ -72,6 +72,8 @@ IV. SET UP JEST TESTS
                 amount: 29500
 
             }
+            //#===
+            
             const action = {
                 type: 'ADD_EXPENSE'
                 

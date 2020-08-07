@@ -27,7 +27,7 @@ test('should not remove expenses if id not found', () => {
 
 //! CHALLENGE CREATE 3 MORE TEST CASES Below
 
-// should add an expense
+//! should add an expense
 test('should add an expense', ()=>{
     const expense = { //FIXTURE (Dumby Data)
         id: '109',
@@ -38,27 +38,38 @@ test('should add an expense', ()=>{
 
     }
     const action = {
-        type: 'ADD_EXPENSE'
+        type: 'ADD_EXPENSE',
+        expense
         
+    }
+    const state = expensesReducer(expenses, action);
+    expect(state).toEqual([ ...expenses, expense]);
+});
+
+//! should edit an expense
+test('should edit an expense', () => {
+    const amount = 122000;
+    const action = {
+        type: 'EDIT_EXPENSE',
+        id: expenses[1].id,
+        updates: {
+            amount
+        }
+    }
+    const state = expensesReducer(expenses, action);
+    expect(state[1].amount).toBe(amount);
+});
+
+//! should not edit expense if expense not found
+test('should not edit expense if expense not found', () => {
+    const amount = 122000;
+    const action = {
+        type: 'EDIT_EXPENSE',
+        id: '-1',
+        updates: {
+            amount
+        }
     }
     const state = expensesReducer(expenses, action);
     expect(state).toEqual(expenses);
 });
-
-// should edit an expense
-test('should edit an expense', () => {
-    const action = {
-        type: 'EDIT_EXPENSE'
-    }
-    const state = expensesReducer(expenses, action);
-    expect(state).toEqual(expenses);
-})
-
-// should not edit expense if expense not found
-test('should not edit expense if expense not found', () => {
-    const action = {
-        type: 'EDIT_EXPENSE'
-    }
-    const state = expensesReducer(expenses, action);
-    expect(state).toEqual(expenses);
-})

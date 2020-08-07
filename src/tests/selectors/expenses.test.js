@@ -1,34 +1,9 @@
 //# EXPENSES SELECTOR TEST CASES
 import moment from 'moment'; // imports moment()
 import selectExpenses from '../../selectors/expenses';
+//# IMPORT FIXTURES (SAMPLE DATA)
+import expenses from '../fixtures/expenses';
 
-
-//# =============================================
-//# TEST DATA (DUMBY DATA ARRAY)
-const expenses = [{
-    id: '1',
-    description: 'Gum', 
-    note: '',
-    amount: 195,
-    createdAt: 0
-},
-{
-    id: '2',
-    description: 'RENT', 
-    note: '',
-    amount: 109500,
-    //createdAt: -1000    // -1sec in the past
-    createdAt: moment(0).subtract(4, 'days').valueOf()    // -4 days in the past
-},
-{
-    id: '3',
-    description: 'Credit Card', 
-    note: '',
-    amount: 4500,
-    //createdAt: 1000 // +1sec in the future
-    createdAt: moment(0).add(4, 'days').valueOf() // +4 days in the future
-}];
-//# =================================================
 
 test('expensesSelector should filter by text value', () => {
     const filters = {
@@ -89,7 +64,7 @@ test('expensesSelector should sort by Date', () => {
 
     const result = selectExpenses(expenses, filters);
 
-    expect(result).toEqual([expenses[2], expenses[0], expenses[1]]);
+    expect(result).toEqual([ expenses[2], expenses[0] ]);
 });
 
 //* should sort by amount

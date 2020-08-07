@@ -55,5 +55,28 @@ III. JEST TEST ARGUMENT METHODS
         .any            === expects to be a function, boolean, etc.
 
 
+IV. SET UP JEST TESTS
 
+    A. Create a basic TEST ARGUMENT
 
+        test('<ERROR_MESSAGE on failure>', ()=>{
+            
+            //# TEST CASE CODE
+
+            //# FIXTURE (Dumby Sample Data)
+            const expense = { //FIXTURE (Dumby Data)
+                id: '109',
+                description: 'Laptop',
+                note: '',
+                createdAt: 20000,
+                amount: 29500
+
+            }
+            const action = {
+                type: 'ADD_EXPENSE'
+                
+            }
+            //# EXPECTED RESULT
+            const state = expensesReducer(expenses, action);
+            expect(state).toEqual(expenses);    // expected results
+        });

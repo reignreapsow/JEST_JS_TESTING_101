@@ -58,6 +58,25 @@ III. JEST TEST ARGUMENT METHODS
 IV. SET UP JEST TESTS
 
     A. Create a basic TEST ARGUMENT
+     test ('<ERROR ALERT MESSAGE>', () =>{
+
+         B. DEFINE TEXT VALUE
+         const text = 'This is my filter';
+
+
+         C. SET UP ACTION
+         const action = {
+             type: '<FILTER_TEXT>',
+             text (same as => text = text)
+         }
+
+         D. Call the reducer
+                === pass in 'undefined' for the current state
+                === pass in action object
+            const state = filterReducer(undefined, action);
+         E. CHECK RESULT
+            expect(state.text).toBe(text);
+     })
 
         test('<ERROR_MESSAGE on failure>', ()=>{
             
@@ -73,7 +92,7 @@ IV. SET UP JEST TESTS
 
             }
             //#===
-            
+
             const action = {
                 type: 'ADD_EXPENSE'
                 

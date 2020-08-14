@@ -1,5 +1,5 @@
 //#ACTION GENERATORS FOR EXPENSES
-import uuid from 'uuid';
+import { v1 as uuid }from 'uuid';
 
 /*
     # NAMED EXPORT === export const addExpense

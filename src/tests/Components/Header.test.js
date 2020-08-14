@@ -1,6 +1,7 @@
 
 import React from 'react';
-import ReactShallowRenderer from 'react-test-renderer/shallow';
+import { shallow } from 'enzyme';
+//import ReactShallowRenderer from 'react-test-renderer/shallow'; //# ALTERNATE SHALLOW RENDERING IMPORT
 import Header from '../../components/AppRouter/Header';
 
 //#################################//
@@ -21,7 +22,13 @@ import Header from '../../components/AppRouter/Header';
 //////////////////////////
 //  SHALLOW RENDERING   //
 //////////////////////////
-/*  //# How-To RULES
+/*  
+    * TESTS components as a unit and ensure that your tests aren't indirectly asserting on behavior of child components.    
+
+    * import shallow from enzyme for shallow rendering
+
+
+      # How-To RULES
        -------------
     1. IMPORT react-test-renderer
     2. Create Component SnapShot Test
@@ -33,9 +40,36 @@ import Header from '../../components/AppRouter/Header';
      
 */
 
-test('should render Header correctly', ()=> {
+/*
+ test('should render Header correctly', ()=> {
     const renderer  = new ReactShallowRenderer();   //#     creates a NEW instance
     renderer.render(<Header />)                     //#     creates a snapshot of the component
     expect(renderer.getRenderOutput()).toMatchSnapshot();   //# compares snapshots
-    //console.log(renderer.getRenderOutput());    //  LOGS rendered output of the JSX
+    //console.log(renderer.getRenderOutput());    //#  LOGS rendered output of the JSX
+}); 
+
+*/
+
+/*
+\//# ALTERNATIVE SHALLOW RENDERING Version 
+test('should render 1 Header h1 correctly', () => {
+    const wrapper = shallow( <Header /> );           //#  new instance of shallow renderer
+    expect(wrapper.find('h1').length).toBe(1);       //#  expects (1) h1
 });
+
+\//# Should render header h1 text value
+test('should render Header h1 text value correctly', () => {
+    const wrapper = shallow( <Header /> );      //#  new instance of shallow renderer
+    expect(wrapper.find('h1').text()).toBe('Expensify');  //#  expects h1 text value 
+});
+*/
+
+//# ALTERNATIVE SHALLOW RENDERING Version 
+test('should render Header correctly', () => {
+    const wrapper = shallow(<Header />);           //#  new instance of shallow renderer
+    expect(wrapper).toMatchSnapshot();             //#  expects Header Component to match snapshot
+});
+
+
+Math Placement 
+History

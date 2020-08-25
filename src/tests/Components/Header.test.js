@@ -69,7 +69,4 @@ test('should render Header correctly', () => {
     const wrapper = shallow(<Header />);           //#  new instance of shallow renderer
     expect(wrapper).toMatchSnapshot();             //#  expects Header Component to match snapshot
 });
-
-
-Math Placement 
-History
+w
